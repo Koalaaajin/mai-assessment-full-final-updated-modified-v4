@@ -230,14 +230,13 @@ const categories = {
       )}
 
        {/* 使用 ShowResult 组件展示测评结果 */}
-      <ShowResult
-        showResult={showResult}
-        chartData={chartData}
-        radarData={radarData}
+          <ShowResult
+        showResult={true}
         scores={scores}
         standardizedMap={standardizedMap}
-        exportCSV={exportCSV}
-        exportPDF={exportPDF}
+        chartData={chartData}
+        radarData={radarData}
+        exportCSV={handleExportCSV}
       />
     </div>
   );
