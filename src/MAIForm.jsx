@@ -229,27 +229,16 @@ const categories = {
         </>
       )}
 
-      {showResult && (
-        <div className="space-y-6">
-          <h2 className="text-xl font-bold">Your Results</h2>
-          <Bar data={chartData} options={{
-            plugins: { legend: { display: false } },
-            scales: { y: { beginAtZero: true, max: 3 } },
-            responsive: true,
-          }} />
-          <ul className="text-sm text-gray-700">
-            {scores.map((s) => (
-              <li key={s.label}>
-                <strong>{s.label}:</strong> {s.score} / {s.total}
-              </li>
-            ))}
-          </ul>
-          <Button onClick={exportCSV} className="mt-4">
-            Export as CSV
-          </Button>
-        </div>
-      )}
+       {/* 使用 ShowResult 组件展示测评结果 */}
+      <ShowResult
+        showResult={showResult}
+        chartData={chartData}
+        radarData={radarData}
+        scores={scores}
+        standardizedMap={standardizedMap}
+        exportCSV={exportCSV}
+        exportPDF={exportPDF}
+      />
     </div>
   );
 }
-    
