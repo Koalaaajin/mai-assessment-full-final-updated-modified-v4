@@ -122,11 +122,16 @@ export default function MAIForm() {
   const handleBack = () => setCurrentPage((prev) => prev - 1);
   const isCompleted = answers.every((a) => a !== null);
 
-  const categories = {
-    "Knowledge about Cognition": [1],
-    "Procedural Knowledge": [2],
-    "Conditional Knowledge": [3],
-  };
+const categories = {
+  "认知的知识": [5, 15, 20, 26, 33],
+  "程序性知识": [13, 17, 27, 31, 39],
+  "条件性知识": [3, 18, 30, 34, 36],
+  "计划能力": [4, 8, 16, 44, 49],
+  "信息管理策略": [10, 12, 28, 40, 41, 47],
+  "理解监控": [9, 14, 23, 32, 35, 46],
+  "调试策略": [6, 21, 25, 38, 42, 43],
+  "评估能力": [1, 2, 7, 11, 19, 22, 24, 29, 37, 45, 48, 50, 51, 52]
+};
 
   // 计算各维度的原始得分
   const scores = Object.entries(categories).map(([label, indices]) => {
