@@ -179,11 +179,6 @@ const categories = {
     saveAs(blob, "MAI_scores.csv");
   };
 
-  // 导出 PDF 的占位实现（可根据需要引入 jsPDF 等库实现）
-  const exportPDF = () => {
-    // TODO: 实现导出 PDF 功能
-    alert("PDF 导出功能尚未实现");
-  };
 
   // 已在上方定义 radarData
 
@@ -234,16 +229,27 @@ const categories = {
         </>
       )}
 
-      {/* 使用 ShowResult 组件展示测评结果 */}
-      <ShowResult
-        showResult={showResult}
-        chartData={chartData}
-        radarData={radarData}
-        scores={scores}
-        standardizedMap={standardizedMap}
-        exportCSV={exportCSV}
-        exportPDF={exportPDF}
-      />
+      {showResult && (
+        <div className="space-y-6">
+          <h2 className="text-xl font-bold">Your Results</h2>
+          <Bar data={chartData} options={{
+            plugins: { legend: { display: false } },
+            scales: { y: { beginAtZero: true, max: 3 } },
+            responsive: true,
+          }} />
+          <ul className="text-sm text-gray-700">
+            {scores.map((s) => (
+              <li key={s.label}>
+                <strong>{s.label}:</strong> {s.score} / {s.total}
+              </li>
+            ))}
+          </ul>
+          <Button onClick={exportCSV} className="mt-4">
+            Export as CSV
+          </Button>
+        </div>
+      )}
     </div>
   );
 }
+    
